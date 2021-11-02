@@ -1,0 +1,36 @@
+.ant-list {
+  min-width: 300px;
+}
+
+.input-container {
+  display: flex;
+  width: 300px;
+  gap: 0 10px;
+  button {
+    padding: 8px 15px;
+    height: 100%;
+  }
+}
+
+.ant-list-items {
+  max-height: calc(100vh - 240px);
+  overflow: auto;
+}
+
+.player-count {
+  float: right;
+  color: #333;
+  font-weight: 600;
+}
+
+.active-item {
+  // color: #01D67E;
+}
+
+.backup-item {
+  color: #dc3545;
+}
+
+.active-item, .backup-item {
+  text-transform: capitalize;
+}
