@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { List, Divider, Input, Button, notification } from 'antd';
+import { List, Divider, Input, Button, notification, Popconfirm, message } from 'antd';
 import { DeleteOutlined, UserOutlined, UserAddOutlined } from '@ant-design/icons'
 
 const PlayerList = () => {
@@ -44,15 +44,20 @@ const PlayerList = () => {
     inputRef.current.focus();
   }
 
-  const removeItem = player => {
-    const filteredData = data.filter(item => item !== player);
-    setData(filteredData);
-  };
-
   const handleInput = (event) => {
     if (event.code === 'Enter') {
       addUser();
     }
+  }
+
+  function confirmDelete(e, player) {
+    const filteredData = data.filter(item => item !== player);
+    setData(filteredData);
+    message.success('Başarıyla silindi.');
+  }
+
+  function cancelDelete(e) {
+    //
   }
 
   return (
@@ -64,9 +69,9 @@ const PlayerList = () => {
           prefix={<UserOutlined />}
           value={inputVal}
           onChange={(e) => setInputVal(e.target.value)}
-          onKeyDown={(e) => handleInput(e)} 
+          onKeyDown={(e) => handleInput(e)}
           ref={inputRef}
-          />
+        />
         <Button type="primary" onClick={addUser}>Add <UserAddOutlined /></Button>
       </div>
       <Divider orientation="center">Oyuncu Listesi</Divider>
@@ -79,7 +84,15 @@ const PlayerList = () => {
           return (
             <List.Item>
               <span className={((data.length - index <= 14) ? 'active-item' : 'backup-item')}>{item} ({(data.length - index <= 14 ? 'Oyuncu' : 'Yedek')})</span>
-              <DeleteOutlined style={{ color: '#F23A3C', fontSize: '30px', cursor: 'pointer' }} onClick={() => removeItem(item)} />
+              <Popconfirm
+                title="Silmek istiyor musunuz?"
+                onConfirm={(e) => confirmDelete(e, item)}
+                onCancel={cancelDelete}
+                okText="Sil"
+                cancelText="Vazgeç"
+              >
+                <DeleteOutlined style={{ color: '#F23A3C', fontSize: '30px', cursor: 'pointer' }} />
+              </Popconfirm>
             </List.Item>
           )
         }}
