@@ -83,7 +83,7 @@ const PlayerList = () => {
         renderItem={(item, index) => {
           return (
             <List.Item>
-              <span className={((data.length - index <= 14) ? 'active-item' : 'backup-item')}>{item} ({(data.length - index <= 14 ? 'Oyuncu' : 'Yedek')})</span>
+              <span className={((data.length - index <= 14) ? 'active-item' : 'backup-item')}>{item} ({(data.length - index <= 14 ? 'Oyuncu' : 'Yedek')} {(data.length - index <= 14 ? (data.length - index) : (data.length - index - 14))})</span>
               <Popconfirm
                 title="Silmek istiyor musunuz?"
                 onConfirm={(e) => confirmDelete(e, item)}
