@@ -1,6 +1,6 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.scss'
-import PlayerList from '../components/List';
+import Head from 'next/head';
+import Link from 'next/link';
+import styles from '../styles/Home.module.scss';
 
 export default function Home() {
   return (
@@ -12,12 +12,17 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <PlayerList />
+        <div className={styles.menuWrapper}>
+          <Link href="/yuzuncu-yil">
+            <a className="ant-btn ant-btn-primary ant-btn-lg">100. Yıl</a>
+          </Link>
+          <Link href="/jotform">
+            <a className="ant-btn ant-btn-primary ant-btn-lg" style={{ background: '#28a745', borderColor: '#28a745' }}>Jotform</a>
+          </Link>
+        </div>
       </main>
 
-      <footer className={styles.footer}>
-
-      </footer>
+      <footer className={styles.footer}></footer>
     </div>
   )
 }
