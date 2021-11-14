@@ -3,7 +3,7 @@ import Head from 'next/head';
 import styles from '../../styles/Home.module.scss';
 import PlayerList from '../List';
 
-export default function SoccerMain() {
+export default function SoccerMain(props) {
   return (
     <div className={styles.container}>
       <Head>
@@ -13,7 +13,7 @@ export default function SoccerMain() {
       </Head>
 
       <main className={styles.main}>
-        <PlayerList />
+        <PlayerList {...props} />
       </main>
 
       <footer className={styles.footer}></footer>

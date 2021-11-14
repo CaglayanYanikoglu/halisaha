@@ -1,11 +1,21 @@
-import Head from 'next/head'
-import React from 'react';
-import SoccerMain from '../../components/SoccerMain';
+import React from "react";
+import SoccerMain from "../../components/SoccerMain";
 
-export default function JotformSoccer() {
+const JotformSoccer = (props) => {
+  console.log(props);
   return (
     <>
-      <SoccerMain />
+      <SoccerMain {...props} />
     </>
   );
 };
+
+export const getServerSideProps = async () => {
+  const response = await fetch("http://localhost:3000/api/feed?type=JF");
+  const { matches, players } = await response.json();
+  return {
+    props: { matches, players },
+  };
+};
+
+export default JotformSoccer;
