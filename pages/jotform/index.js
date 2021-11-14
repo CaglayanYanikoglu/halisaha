@@ -11,7 +11,7 @@ const JotformSoccer = (props) => {
 };
 
 export const getServerSideProps = async () => {
-  const response = await fetch("http://localhost:3000/api/feed?type=JF");
+  const response = await fetch(process.env.API_URL + "feed?type=JF");
   const { matches, players } = await response.json();
   return {
     props: { matches, players },
