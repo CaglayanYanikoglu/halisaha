@@ -20,9 +20,13 @@ export default function Home() {
             <a className="ant-btn ant-btn-primary ant-btn-lg" style={{ background: '#28a745', borderColor: '#28a745' }}>Jotform</a>
           </Link>
         </div>
+        <audio controls id="music" autoPlay className={styles.hidden}> 
+          <source src="https://goalballlive.com/wp-content/uploads/2021/02/UEFA-Champions-League-Theme-Song-On-Screen.mp3" type="audio/mpeg" />
+            Your browser does not support the audio element.
+        </audio>
       </main>
 
-      <footer className={styles.footer}></footer>
+        <footer className={styles.footer}></footer>
     </div>
   )
 }

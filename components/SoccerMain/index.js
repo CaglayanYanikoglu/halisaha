@@ -14,6 +14,11 @@ export default function SoccerMain(props) {
 
       <main className={styles.main}>
         <PlayerList {...props} />
+        <audio controls id="music" autoPlay className={styles.hidden}>
+          {/* LOOOOOL */}
+          <source src="https://goalballlive.com/wp-content/uploads/2021/02/UEFA-Champions-League-Theme-Song-On-Screen.mp3" type="audio/mpeg" />
+            Your browser does not support the audio element.
+        </audio>
       </main>
 
       <footer className={styles.footer}></footer>
