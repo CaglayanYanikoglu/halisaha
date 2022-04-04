@@ -15,7 +15,7 @@ export default async function handle(req, res) {
 // GET /api/match/:id
 async function handleGET(matchId, res) {
   const post = await prisma.match.findUnique({
-    where: { id: Number(matchId) },
+    where: { id: matchId },
   });
   res.json(post);
 }
@@ -23,7 +23,7 @@ async function handleGET(matchId, res) {
 // DELETE /api/match/:id
 async function handleDELETE(matchId, res) {
   const post = await prisma.match.delete({
-    where: { id: Number(matchId) },
+    where: { id: matchId },
   });
   res.json(post);
 }
