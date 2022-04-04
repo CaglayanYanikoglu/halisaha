@@ -6,13 +6,8 @@ export default async function (req, res) {
     const matches = await prisma.match.findMany({
       take: 1,
       where: {
-        status: {
-          not: -1,
-        },
+        match_status: "active",
         match_type: req.query.type || 'NORMAL'
-      },
-      orderBy: {
-        id: "desc",
       },
     });
     const players = await prisma.player.findMany({
@@ -27,6 +22,6 @@ export default async function (req, res) {
     res.json({ matches, players });
   } catch (e) {
     res.status(500);
-    res.json({ error: "Unable to fetch match" });
+    res.json({ error: e.message });
   }
 }

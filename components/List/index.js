@@ -23,12 +23,14 @@ const PlayerList = (props) => {
 
   useEffect(() => {
     let players = [];
-    props.players.forEach((el) => {
-      players.push({
-        id: el.id,
-        name: el.name,
+    if (props.players) {
+      props.players.forEach((el) => {
+        players.push({
+          id: el.id,
+          name: el.name,
+        });
       });
-    });
+    }
     setData(players);
   }, []);
 
@@ -109,6 +111,7 @@ const PlayerList = (props) => {
   };
 
   function confirmDelete(e, player) {
+    console.log(player);
     deletePlayerRequest(player.id).then((res) => {
       if (res) {
         const filteredData = data.filter((item) => item.id !== player.id);
