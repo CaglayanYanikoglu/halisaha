@@ -85,7 +85,7 @@ const PlayerList = (props) => {
       if (result) {
         newList.unshift({ name: result.name, id: result.id });
         setData(newList);
-        if (newList.length > 14) {
+        if (newList.length > 20) {
           openNotificationWithIcon(
             "warning",
             `${inputVal}, liste full olduğu için şuan yedeksiniz.`
@@ -145,7 +145,7 @@ const PlayerList = (props) => {
         header={
           <div>
             Oyuncu Sayısı:{" "}
-            <span className="player-count">{data.length} / 14</span>
+            <span className="player-count">{data.length} / 20</span>
           </div>
         }
         bordered
@@ -156,13 +156,13 @@ const PlayerList = (props) => {
             <List.Item>
               <span
                 className={
-                  data.length - index <= 14 ? "active-item" : "backup-item"
+                  data.length - index <= 20 ? "active-item" : "backup-item"
                 }
               >
-                {item.name} ({data.length - index <= 14 ? "Oyuncu" : "Yedek"}{" "}
-                {data.length - index <= 14
+                {item.name} ({data.length - index <= 20 ? "Oyuncu" : "Yedek"}{" "}
+                {data.length - index <= 20
                   ? data.length - index
-                  : data.length - index - 14}
+                  : data.length - index - 20}
                 )
               </span>
               <Popconfirm
