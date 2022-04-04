@@ -12,7 +12,7 @@ datasource db {
 }
 
 model Match {
-  id String @id @default(dbgenerated()) @map("_id") @db.ObjectId
+  id String @id @default(auto()) @map("_id") @db.ObjectId
   match_title String
   match_location String?
   match_type Type @default(NORMAL)
@@ -23,7 +23,7 @@ model Match {
 }
 
 model Player {
-  id String @id @default(dbgenerated()) @map("_id") @db.ObjectId
+  id String @id @default(auto()) @map("_id") @db.ObjectId
   name String
   match_id String
   created_at DateTime @default(now())
